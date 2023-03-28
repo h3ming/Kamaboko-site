@@ -54,6 +54,7 @@ export default class Resources extends EventEmitter {
                 this.videoTexture[asset.name].generateMipmaps = false;
                 this.videoTexture[asset.name].encoding = THREE.sRGBEncoding;
 
+                this.singleAssetLoaded(asset, this.videoTexture[asset.name]);
             }
         }
     }
@@ -62,7 +63,6 @@ export default class Resources extends EventEmitter {
         this.items[asset.name] = file;
         this.loaded++;
 
-        console.log(file);
         if(this.loaded === this.queue) {
             this.emit("ready");
         }
